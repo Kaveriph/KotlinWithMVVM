@@ -1,63 +1,58 @@
 package com.anushka.viewmodeldemo1
 
-import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.ViewModelProvider
-import com.anushka.viewmodeldemo1.databinding.ActivityMainBinding
+import com.anushka.viewmodeldemo1.databinding.ActivitySecondBinding
 
-class MainActivity : AppCompatActivity() {
-    private lateinit var binding: ActivityMainBinding
-    private lateinit var viewModel: MainActivityViewModel
+class SecondActivity : AppCompatActivity() {
+    private lateinit var binding: ActivitySecondBinding
+    private lateinit var viewModel : MainActivityViewModel
 
     override fun onCreate(savedInstanceState: Bundle?) {
-        Log.d("InMainActivity", "onCreate")
         super.onCreate(savedInstanceState)
-        binding = DataBindingUtil.setContentView(this, R.layout.activity_main)
+        binding = DataBindingUtil.setContentView(this, R.layout.activity_second)
         viewModel = ViewModelProvider(this).get(MainActivityViewModel::class.java)
         binding.countText.text = viewModel.getCurrentCount().toString()
         binding.addButton.setOnClickListener {
             binding.countText.text = viewModel.getUpdatedCount(binding.etNumber.text.toString().toInt()).toString()
         }
-        binding.nextScreen.setOnClickListener {
-            startActivity(Intent(this, SecondActivity::class.java))
-        }
     }
 
     override fun onRestart() {
-        Log.d("InMainActivity", "onRestart")
+        Log.d("InSecondActivity", "onRestart")
         super.onRestart()
     }
 
     override fun onPostResume() {
-        Log.d("InMainActivity", "onPostResume")
+        Log.d("InSecondActivity", "onPostResume")
         super.onPostResume()
     }
 
     override fun onStart() {
-        Log.d("InMainActivity", "onStart")
+        Log.d("InSecondActivity", "onStart")
         super.onStart()
     }
 
     override fun onPause() {
-        Log.d("InMainActivity", "onPause")
+        Log.d("InSecondActivity", "onPause")
         super.onPause()
     }
 
     override fun onStop() {
-        Log.d("InMainActivity", "onStop")
+        Log.d("InSecondActivity", "onStop")
         super.onStop()
     }
 
     override fun onResume() {
-        Log.d("InMainActivity", "onResume")
+        Log.d("InSecondActivity", "onResume")
         super.onResume()
     }
 
     override fun onDestroy() {
-        Log.d("InMainActivity", "onDestroy")
+        Log.d("InSecondActivity", "onDestroy")
         super.onDestroy()
     }
 }
