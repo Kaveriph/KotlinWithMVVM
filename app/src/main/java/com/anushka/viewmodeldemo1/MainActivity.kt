@@ -8,15 +8,15 @@ import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.ViewModelProvider
 import com.anushka.viewmodeldemo1.databinding.ActivityMainBinding
 
-class MainActivity : AppCompatActivity() {
+class MainActivity : BaseActivity() {
     private lateinit var binding: ActivityMainBinding
-    private lateinit var viewModel: MainActivityViewModel
 
     override fun onCreate(savedInstanceState: Bundle?) {
         Log.d("InMainActivity", "onCreate")
         super.onCreate(savedInstanceState)
         binding = DataBindingUtil.setContentView(this, R.layout.activity_main)
-        viewModel = ViewModelProvider(this).get(MainActivityViewModel::class.java)
+        viewModelFactory = MainActivityViewModelFactory(10)
+        viewModel = ViewModelProvider(this, viewModelFactory).get(MainActivityViewModel::class.java)
         binding.countText.text = viewModel.getCurrentCount().toString()
         binding.addButton.setOnClickListener {
             binding.countText.text = viewModel.getUpdatedCount(binding.etNumber.text.toString().toInt()).toString()

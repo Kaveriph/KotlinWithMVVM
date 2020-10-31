@@ -4,13 +4,17 @@ import android.util.Log
 import android.widget.EditText
 import androidx.lifecycle.ViewModel
 
-class MainActivityViewModel : ViewModel() {
+class MainActivityViewModel(initialValue: Int) : ViewModel() {
 
+    private var count = 0
+
+    init {
+        count = initialValue
+    }
     override fun onCleared() {
         Log.d("InMainActivity", "onCleared of viewmodel")
     }
 
-    private var count = 0
 
     fun getCurrentCount(): Int {
         return count

@@ -1,20 +1,19 @@
 package com.anushka.viewmodeldemo1
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.ViewModelProvider
 import com.anushka.viewmodeldemo1.databinding.ActivitySecondBinding
 
-class SecondActivity : AppCompatActivity() {
+class SecondActivity : BaseActivity() {
     private lateinit var binding: ActivitySecondBinding
-    private lateinit var viewModel : MainActivityViewModel
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = DataBindingUtil.setContentView(this, R.layout.activity_second)
-        viewModel = ViewModelProvider(this).get(MainActivityViewModel::class.java)
+        viewModelFactory = MainActivityViewModelFactory(20)
+        viewModel = ViewModelProvider(this, viewModelFactory).get(MainActivityViewModel::class.java)
         binding.countText.text = viewModel.getCurrentCount().toString()
         binding.addButton.setOnClickListener {
             binding.countText.text = viewModel.getUpdatedCount(binding.etNumber.text.toString().toInt()).toString()
