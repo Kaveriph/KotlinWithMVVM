@@ -1,6 +1,7 @@
 package com.anushka.viewmodeldemo1
 
 import android.util.Log
+import android.widget.EditText
 import androidx.lifecycle.ViewModel
 
 class MainActivityViewModel : ViewModel() {
@@ -15,7 +16,8 @@ class MainActivityViewModel : ViewModel() {
         return count
     }
 
-    fun getUpdatedCount(): Int {
-        return count++
+    fun getUpdatedCount(etNumber: Int): Int {
+        count  = count+etNumber
+        return count
     }
 }
