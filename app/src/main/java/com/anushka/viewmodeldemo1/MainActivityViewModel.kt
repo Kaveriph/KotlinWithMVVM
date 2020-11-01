@@ -11,10 +11,10 @@ class MainActivityViewModel(initialValue: Int) : ViewModel() {
     init {
         count = initialValue
     }
+
     override fun onCleared() {
         Log.d("InMainActivity", "onCleared of viewmodel")
     }
-
 
     fun getCurrentCount(): Int {
         return count

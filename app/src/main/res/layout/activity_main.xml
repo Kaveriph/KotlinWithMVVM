@@ -2,61 +2,30 @@
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
-<androidx.constraintlayout.widget.ConstraintLayout
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".MainActivity">
 
-
-    <EditText
-        android:id="@+id/etNumber"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintBottom_toTopOf="@+id/count_text"
-        android:inputType="number"
+    <LinearLayout
+        android:orientation="vertical"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="match_parent"
+        android:weightSum="2"
+        tools:context=".MainActivity">
 
-    </EditText>
-    <TextView
-        android:id="@+id/count_text"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textSize="66sp"
-        android:textStyle="bold"
-        android:typeface="serif"
-        android:text="0"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.262" />
+        <androidx.fragment.app.FragmentContainerView
+            android:layout_weight="0.5"
+            android:id="@+id/receiverFragment"
+            android:name="com.anushka.viewmodeldemo1.ReceiverFragment"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
 
-    <Button
-        android:id="@+id/add_button"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Add"
-        android:textSize="30sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        </androidx.fragment.app.FragmentContainerView>
 
-    <Button
-        android:id="@+id/nextScreen"
-        android:textSize="30sp"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/add_button"
-        android:text="NEXT"
-        >
+        <androidx.fragment.app.FragmentContainerView
+            android:layout_weight="0.5"
+            android:id="@+id/senderFragment"
+            android:name="com.anushka.viewmodeldemo1.SenderFragment"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+        </androidx.fragment.app.FragmentContainerView>
 
-    </Button>
-
-</androidx.constraintlayout.widget.ConstraintLayout>
+    </LinearLayout>
 </layout>

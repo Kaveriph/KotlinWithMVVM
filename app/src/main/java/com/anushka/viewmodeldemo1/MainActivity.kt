@@ -17,16 +17,9 @@ class MainActivity : BaseActivity() {
         binding = DataBindingUtil.setContentView(this, R.layout.activity_main)
         viewModelFactory = MainActivityViewModelFactory(10)
         viewModel = ViewModelProvider(this, viewModelFactory).get(MainActivityViewModel::class.java)
-        binding.countText.text = viewModel.getCurrentCount().toString()
-        binding.addButton.setOnClickListener {
-            binding.countText.text = viewModel.getUpdatedCount(binding.etNumber.text.toString().toInt()).toString()
-        }
-        binding.nextScreen.setOnClickListener {
-            startActivity(Intent(this, SecondActivity::class.java))
-        }
     }
 
-    override fun onRestart() {
+   /* override fun onRestart() {
         Log.d("InMainActivity", "onRestart")
         super.onRestart()
     }
@@ -59,5 +52,5 @@ class MainActivity : BaseActivity() {
     override fun onDestroy() {
         Log.d("InMainActivity", "onDestroy")
         super.onDestroy()
-    }
+    }*/
 }
