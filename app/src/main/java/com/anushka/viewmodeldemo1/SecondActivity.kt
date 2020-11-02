@@ -3,6 +3,7 @@ package com.anushka.viewmodeldemo1
 import android.os.Bundle
 import android.util.Log
 import androidx.databinding.DataBindingUtil
+import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import com.anushka.viewmodeldemo1.databinding.ActivitySecondBinding
 
@@ -14,9 +15,11 @@ class SecondActivity : BaseActivity() {
         binding = DataBindingUtil.setContentView(this, R.layout.activity_second)
         viewModelFactory = MainActivityViewModelFactory(20)
         viewModel = ViewModelProvider(this, viewModelFactory).get(MainActivityViewModel::class.java)
-        binding.countText.text = viewModel.getCurrentCount().toString()
+        viewModel.countTotal.observe(this, Observer {
+           binding.countText.text = viewModel.countTotal.value?.toString()
+        })
         binding.addButton.setOnClickListener {
-            binding.countText.text = viewModel.getUpdatedCount(binding.etNumber.text.toString().toInt()).toString()
+            binding.countText.text = viewModel.updateCount(binding.etNumber.text.toString().toInt()).toString()
         }
     }
 

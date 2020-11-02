@@ -42,7 +42,7 @@ class SenderFragment : Fragment() {
         binding = DataBindingUtil.getBinding<FragmentSenderBinding>(view) as FragmentSenderBinding
         viewModel = ViewModelProvider(requireActivity()).get(MainActivityViewModel::class.java)
         binding.addButton.setOnClickListener {
-            viewModel.getUpdatedCount(binding.etNumber.text.toString().toInt()).toString()
+            viewModel.updateCount(binding.etNumber.text.toString().toInt()).toString()
         }
 
     }

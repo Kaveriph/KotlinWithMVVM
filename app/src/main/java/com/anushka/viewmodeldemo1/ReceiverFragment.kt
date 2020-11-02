@@ -6,6 +6,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
+import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import com.anushka.viewmodeldemo1.databinding.FragmentReceiverBinding
 import com.anushka.viewmodeldemo1.databinding.FragmentSenderBinding
@@ -37,15 +38,13 @@ class ReceiverFragment : Fragment() {
         binding = DataBindingUtil.inflate(inflater, R.layout.fragment_receiver, container, false)
         return binding.root
     }
-
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         viewModel = ViewModelProvider(requireActivity()).get(MainActivityViewModel::class.java)
         binding = DataBindingUtil.getBinding<FragmentReceiverBinding>(view) as FragmentReceiverBinding
-        binding.countText.text = viewModel.getCurrentCount().toString()
-        binding.nextScreen.setOnClickListener {
-           binding.countText.text = viewModel.getCurrentCount().toString()
-        }
+        viewModel.countTotal.observe(viewLifecycleOwner, Observer {
+            binding.countText.text = it?.toString()
+        })
     }
 
 }

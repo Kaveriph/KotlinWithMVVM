@@ -9,6 +9,5 @@ open class BaseActivity : AppCompatActivity() {
     lateinit var viewModelFactory: MainActivityViewModelFactory
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-
     }
 }
